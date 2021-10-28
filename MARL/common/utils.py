@@ -72,7 +72,7 @@ class VideoRecorder:
     def __init__(self, filename, frame_size, fps):
         self.video_writer = cv2.VideoWriter(
             filename,
-            cv2.VideoWriter_fourcc(*"MPEG"), int(fps),
+            cv2.VideoWriter_fourcc(*'mp4v'), int(fps),
             (frame_size[1], frame_size[0]))
 
     def add_frame(self, frame):
