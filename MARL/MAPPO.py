@@ -95,6 +95,7 @@ class MAPPO:
         self.epoch_steps = [0]
 
     # agent interact with the environment to collect experience
+    # TODO: Modify highway env to accommodate for this --> design of reward around throughput task
     def interact(self):
         if (self.max_steps is not None) and (self.n_steps >= self.max_steps):
             self.env_state, _ = self.env.reset()
