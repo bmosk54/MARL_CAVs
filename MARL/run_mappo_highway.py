@@ -92,7 +92,6 @@ def train(args):
     traffic_density = config.getint('ENV_CONFIG', 'traffic_density')
     env.config['action_masking'] = config.getboolean('MODEL_CONFIG', 'action_masking')
 
-    print(env.T, ROLL_OUT_N_STEPS)
     assert env.T % ROLL_OUT_N_STEPS == 0
 
     env_eval = gym.make('highway-v0')

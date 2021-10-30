@@ -192,7 +192,7 @@ class AbstractEnv(gym.Env):
         self.define_spaces()
         for i, v in enumerate(self.road.vehicles):
             v.id = i
-        obs = self.observation_type.observe()
+        obs = self.observation_type.observe() # kinematic observation-> MARL/highway_env/envs/common/observation.py
         # get action masks
         if self.config["action_masking"]:
             available_actions = [[0] * self.n_a] * len(self.controlled_vehicles)
@@ -202,6 +202,7 @@ class AbstractEnv(gym.Env):
                     available_actions[i][a] = 1
         else:
             available_actions = [[1] * self.n_a] * len(self.controlled_vehicles)
+        result = np.asarray(obs).reshape((len(obs), -1)), np.array(available_actions)
         return np.asarray(obs).reshape((len(obs), -1)), np.array(available_actions)
 
     def _reset(self, num_CAV=1) -> None:
